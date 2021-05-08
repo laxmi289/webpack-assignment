@@ -2,7 +2,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PrettierPlugin = require('prettier-webpack-plugin')
-const ESLintPlugin = require('eslint-webpack-plugin')
 
 const paths = require('./paths')
 
@@ -45,12 +44,6 @@ module.exports = {
       filename: 'index.html', // output file
     }),
 
-    // ESLint configuration
-    new ESLintPlugin({
-      files: ['.', 'src', 'config'],
-      formatter: 'table',
-    }),
-
     // Prettier configuration
     new PrettierPlugin(),
   ],
@@ -59,7 +52,16 @@ module.exports = {
   module: {
     rules: [
       // JavaScript: Use Babel to transpile JavaScript files
-      { test: /\.js$/, use: ['babel-loader'] },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
 
       // Images: Copy image files to build folder
       { test: /\.(?:ico|gif|png|jpg|jpeg)$/i, type: 'asset/resource' },

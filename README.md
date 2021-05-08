@@ -1,9 +1,5 @@
 # 📦 webpack Boilerplate
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
-Sensible webpack 5 boilerplate using Babel, PostCSS and Sass with a hot dev server and an optimized production build.
-
 ## Installation
 
 Clone this repo and npm install.
@@ -93,10 +89,7 @@ cd dist && http-server
 - [`prettier`](https://github.com/prettier/prettier) - Dependency for `prettier-webpack-plugin` plugin
 - [`prettier-webpack-plugin`](https://github.com/hawkins/prettier-webpack-plugin) - Prettier configuration for webpack
 
-## Author
+### Unit Test
 
-- [Tania Rascia](https://www.taniarascia.com)
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+- https://github.com/testing-library/jest-dom#tobedisabled
+- https://jestjs.io/docs/using-matchers
