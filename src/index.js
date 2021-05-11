@@ -1,5 +1,6 @@
 // Test import of a JavaScript module
 import App from '@/js/App/App';
+import SidePanel from '@/js/App/SidePanel/SidePanel';
 
 // Test import of styles
 import '@/styles/index.scss';
