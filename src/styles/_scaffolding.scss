@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 html {
   font-size: $font-size;
-  font-family: $font-family;
-  background: $secondary;
+  font-family: 'Poppins', sans-serif;
+  // font-family: 'Raleway', sans-serif;
+  background: $primary;
   color: $font-color;
   max-width: $page-width;
   line-height: 1.4;

@@ -58,5 +58,19 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:taniarascia/webpack-boilerplate"
-  }
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "esm": "^3.2.25",
+    "node-fetch": "^2.6.1",
+    "ora": "^5.4.0",
+    "regenerator-runtime": "^0.13.7"
+  },
+  "browserslist": [
+    "last 3 and_chr versions",
+    "last 3 chrome versions",
+    "last 3 opera versions",
+    "last 3 ios_saf versions",
+    "last 3 safari versions"
+  ]
 }

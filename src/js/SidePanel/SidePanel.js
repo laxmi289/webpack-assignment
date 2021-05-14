@@ -1,37 +1,80 @@
 import './SidePanel.scss';
+import axios from 'axios';
 
 class SidePanel {
   bodyEl = document.createElement('div');
-  sidePanelEl = document.createElement('div');
 
+  //Side panel elements
+  sidePanelEl = document.createElement('div');
+  headingEl = document.createElement('h2');
   categoryEl = document.createElement('div');
+  categoryDisplayEl = document.createElement('div');
   priceEl = document.createElement('div');
   searchEl = document.createElement('div');
 
+  //Main body elements
+  bodyContainer = document.createElement('div');
+  productContainer = document.createElement('div');
+
+  // getProducts = (products) => {
+  //   categoryDisplayEl.innerHTML = products
+  //     .map((product) => {
+  //       return `
+  //         <li>${product.category}</li>`;
+  //     })
+  //     .join('');
+  // };
+
+  getRepos = async () => {
+    const res = await fetch(
+      'https://6083c8329b2bed0017040391.mockapi.io/api/products'
+    );
+    const data = await res.json();
+    console.log(data);
+  };
+
   constructor() {
+    //Side panel elements properties
     this.bodyEl.setAttribute('id', 'body');
     this.sidePanelEl.setAttribute('id', 'side-panel-container');
-    this.categoryEl.setAttribute('id', 'catogories');
+    this.headingEl.setAttribute('id', 'heading');
+    this.categoryEl.setAttribute('id', 'category');
+    this.categoryEl.setAttribute('class', 'side-item');
+    this.categoryDisplayEl.setAttribute('id', 'category-display');
     this.priceEl.setAttribute('id', 'price');
+    this.priceEl.setAttribute('class', 'side-item');
     this.searchEl.setAttribute('id', 'search');
+    this.searchEl.setAttribute('class', 'side-item');
 
-    this.sidePanelEl.innerHTML = '<h3>Filters</h3>';
+    this.headingEl.innerHTML = 'Filters<hr>';
+    this.categoryEl.innerHTML = ' <div><h4 id="one">Categories</h4>';
 
-    this.categoryEl.innerHTML =
-      ' <div><h4>Categories</h4><ul><li>Item 1</li><li>Item 1</li><li>Item 1</li></ul></div> ';
+    this.getRepos();
 
     this.priceEl.innerHTML =
-      ' <div><h4>Price Filter</h4><ul><li>Price 1</li><li>Price 1</li><li>Price 1</li></ul></div> ';
+      ' <div><h4>Price Filter</h4><ul><li class = "item"><a href="">Less than Rs 100</a></li><li class = "item"><a href="">Rs 100 - Rs 300</a></li><li class = "item"><a href="">Rs 301 - Rs 500</a></li><li class = "item"><a href="">Rs 501 - Rs 700</a></li><li class = "item"><a href="">Rs 701 - Rs 1000</a></li></ul></div> ';
 
     this.searchEl.innerHTML =
-      ' <div><h4>Text Filter</h4><input type="text"></div>';
+      ' <div><h4>Text Search</h4><input type="text" id="search-box" onkeyup="myFunction()"></div>';
+
+    //Main body elements properties class = "item"
+    this.bodyContainer.setAttribute('id', 'body-container');
+    this.productContainer.setAttribute('id', 'prod-container');
   }
 
   render() {
+    //Appending side panel elements to bodyEl
     this.bodyEl.append(this.sidePanelEl);
-    this.sidePanelEl.append(this.categoryEl);
-    this.sidePanelEl.append(this.priceEl);
+    this.sidePanelEl.append(this.headingEl);
     this.sidePanelEl.append(this.searchEl);
+    this.sidePanelEl.append(this.categoryEl);
+    this.categoryEl.append(this.categoryDisplayEl);
+    this.sidePanelEl.append(this.priceEl);
+
+    //Appending main body elements to bodyEl
+    this.bodyEl.append(this.bodyContainer);
+    this.bodyContainer.append(this.productContainer);
+
     return this.bodyEl;
   }
 }
