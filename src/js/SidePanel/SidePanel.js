@@ -11,24 +11,14 @@ class SidePanel {
   categoryDisplayEl = document.createElement('div');
   priceEl = document.createElement('div');
   searchEl = document.createElement('div');
+  getFilter = null;
 
   //Main body elements
   bodyContainer = document.createElement('div');
   productContainer = document.createElement('div');
 
-  // getProducts = (products) => {
-  //   categoryDisplayEl.innerHTML = products
-  //     .map((product) => {
-  //       return `
-  //         <li>${product.category}</li>`;
-  //     })
-  //     .join('');
-  // };
-
   getRepos = async () => {
-    const res = await fetch(
-      'https://6083c8329b2bed0017040391.mockapi.io/api/products'
-    );
+    const res = await fetch('https://fakestoreapi.com/products');
     const data = await res.json();
     console.log(data);
   };
@@ -49,13 +39,13 @@ class SidePanel {
     this.headingEl.innerHTML = 'Filters<hr>';
     this.categoryEl.innerHTML = ' <div><h4 id="one">Categories</h4>';
 
-    this.getRepos();
-
     this.priceEl.innerHTML =
       ' <div><h4>Price Filter</h4><ul><li class = "item"><a href="">Less than Rs 100</a></li><li class = "item"><a href="">Rs 100 - Rs 300</a></li><li class = "item"><a href="">Rs 301 - Rs 500</a></li><li class = "item"><a href="">Rs 501 - Rs 700</a></li><li class = "item"><a href="">Rs 701 - Rs 1000</a></li></ul></div> ';
 
     this.searchEl.innerHTML =
-      ' <div><h4>Text Search</h4><input type="text" id="search-box" onkeyup="myFunction()"></div>';
+      ' <div><h4>Text Search</h4><input type="text" id="search-box">';
+
+    this.getRepos;
 
     //Main body elements properties class = "item"
     this.bodyContainer.setAttribute('id', 'body-container');

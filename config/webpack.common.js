@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PrettierPlugin = require('prettier-webpack-plugin')
 
+
 const paths = require('./paths')
 
 module.exports = {
@@ -31,6 +32,7 @@ module.exports = {
                 },
                 noErrorOnMissing: true,
             }, ],
+
         }),
 
         // Generates an HTML file from a template

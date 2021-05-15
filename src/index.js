@@ -18,7 +18,7 @@ const renderProducts = (products) => {
     .map((product) => {
       return `
         <div class="item">
-            <li><a href="" onmousedown="show()">${product.category}</a><li>
+            <li><a href="">${product.category}</a><li>
         </div>
         `;
     })
@@ -31,13 +31,13 @@ const displayProducts = (items) => {
       return `
         <div id="box">
         <div class="box-item" id="item-img">
-            <img src="${item.image}">
+            <img src="${item.image}" style="width:150px;">
         </div>
         <div class="box-item" id="item-title-desc">
             <h3>${item.title}</h3>
             <h6>Category: ${item.category}</h6>
             <p>Product description: ${item.description}</p>
-            <p>Price: ${item.price}</p>
+            <p>Price: Rs. ${item.price}</p>
         </div>
         </div>
           `;
@@ -46,12 +46,33 @@ const displayProducts = (items) => {
 };
 
 const fetchProducts = async () => {
-  const response = await fetch(
-    'https://6083c8329b2bed0017040391.mockapi.io/api/products'
-  );
+  const response = await fetch('https://fakestoreapi.com/products');
   const result = await response.json();
-  const tools_filter = result.filter((element) => element.category);
-  renderProducts(result);
-  displayProducts(tools_filter);
+
+  let newArray = [];
+
+  // Declare an empty object
+  let uniqueObject = {};
+
+  // Loop for the array elements
+  for (let i in result) {
+    // Extract the title
+    let objTitle = result[i]['category'];
+
+    // Use the title as the index
+    uniqueObject[objTitle] = result[i];
+  }
+
+  // Loop to push unique object into array
+  for (var i in uniqueObject) {
+    newArray.push(uniqueObject[i]);
+  }
+
+  // Display the unique objects
+  renderProducts(newArray);
+
+  displayProducts(result);
+  displayMens(result);
 };
+
 fetchProducts();
