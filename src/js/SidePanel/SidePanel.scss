@@ -15,12 +15,17 @@
 }
 
 #heading {
-  margin: 20px 17px;
+  margin: 0px 17px;
+  padding: 16px 0;
   color: $font-color;
 }
 
+hr {
+  margin-bottom: 1px;
+}
+
 .side-item {
-  margin: 15px;
+  margin: 0px 15px 10px 15px;
   padding: 3px 0;
 }
 
@@ -28,17 +33,17 @@
   margin: 15px 0;
 }
 
-#category {
-  width: 118px;
-}
-
 #category-display {
-  margin: 3px 18px;
-  width: 100%;
+  margin-left: 20px;
 }
 
 .item {
   margin: 7px 0;
+  width: 170px;
+}
+
+#price-display {
+  margin: 3px 18px;
 }
 
 #price ul {
@@ -53,15 +58,31 @@
 
 #search input {
   width: 94%;
+  background: $secondary;
   height: 23px;
-  border-radius: 13px;
-  border: 2px solid $primary;
+  border: none;
+  border-bottom: 1px solid $primary;
+  outline: none;
+}
+
+#search input:focus {
+  border-bottom: 1px solid $font-color;
+  border-width: 3px;
+  font-size: 15px;
 }
 
 #category-display a,
 #price a {
   text-decoration: none;
   color: $primary;
+  padding: 5px 0;
+}
+
+#category-display a:hover,
+#price a:hover {
+  font-size: 19px;
+  font-weight: bold;
+  color: $font-color;
 }
 
 // Main body elements styling
@@ -93,4 +114,49 @@
 .box-item {
   margin: 20px;
   color: black;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  #body {
+    display: block;
+  }
+  #side-panel-container {
+    width: 102%;
+    box-shadow: 0px 0 5px #f8eaea;
+    margin: 0;
+  }
+  #category {
+    width: 100%;
+  }
+  #category-display {
+    width: 90%;
+    display: flex;
+    margin: 10px 0;
+    padding: 10px;
+  }
+  #category-display .item {
+    margin: 12px 0;
+  }
+  .item {
+    margin: 10px auto;
+    width: 100%;
+  }
+  #price-display {
+    display: flex;
+  }
+  #box {
+    display: flex;
+    flex-direction: column;
+    border-block-end: 11px solid $primary;
+  }
+  #body-container {
+    margin: 0px -25px 0 11px;
+  }
+  #body-line {
+    color: $primary;
+  }
+  #prod-container {
+    width: 98%;
+  }
 }

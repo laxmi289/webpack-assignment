@@ -3,12 +3,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PrettierPlugin = require('prettier-webpack-plugin')
 
-
 const paths = require('./paths')
 
 module.exports = {
     // Where webpack looks to start building the bundle
     entry: [paths.src + '/index.js'],
+
 
     // Where webpack outputs the assets and bundles 
     output: {
@@ -44,6 +44,11 @@ module.exports = {
             filename: 'index.html', // output file
         }),
 
+        new LodashModuleReplacementPlugin({
+            'collections': true,
+            'paths': true
+        }),
+
         // Prettier configuration
         new PrettierPlugin(),
     ],
@@ -58,6 +63,7 @@ module.exports = {
                 use: {
                     loader: "babel-loader",
                     options: {
+                        plugins: ['lodash'],
                         presets: ['@babel/preset-env']
                     }
                 }
