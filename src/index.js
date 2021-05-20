@@ -181,8 +181,8 @@ const fetchProducts = async () => {
   let uniqueObject = {};
 
   // Loop for the array elements
-  for (let i in result) {
-    // Extract the title
+  for (var i in result) {
+    // Extract the category
     let objTitle = result[i]['category'];
 
     // Use the category as the index
